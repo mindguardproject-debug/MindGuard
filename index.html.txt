@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindGuard — Простір Психологічного Відновлення</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #95d5b2; 
+            --secondary: #b8c0ff;
+            --premium: #ffb703; /* Золотистий для Plus */
+            --bg-light: #f8f9fa;
+            --text-dark: #2d3436;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.9);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Nunito', sans-serif; }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+
+        /* Анімації появи */
+        .reveal { opacity: 0; transition: all 1s ease-out; transform: translateY(30px); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Навігація */
+        header {
+            position: fixed; width: 100%; top: 0; padding: 15px 5%;
+            background: var(--glass); backdrop-filter: blur(10px);
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .logo-box { display: flex; align-items: center; gap: 10px; }
+        .logo-circle { width: 35px; height: 35px; background: var(--primary); border-radius: 50%; }
+        .logo-name { font-weight: 700; font-size: 1.4rem; color: #40514e; }
+        
+        nav a {
+            text-decoration: none; color: var(--text-dark); margin-left: 20px;
+            font-weight: 600; transition: 0.3s; font-size: 0.95rem;
+        }
+
+        nav a:hover { color: var(--primary); }
+        .nav-plus { color: var(--premium) !important; font-weight: 800; }
+
+        /* Секції */
+        section { padding: 120px 8% 60px; min-height: 100vh; }
+
+        /* Головна */
+        .hero {
+            background: radial-gradient(circle at top right, #e9edc9, #fefae0);
+            text-align: center; display: flex; flex-direction: column; justify-content: center;
+            align-items: center;
+        }
+
+        h1 { font-size: 3.5rem; margin-bottom: 20px; color: #40514e; }
+        .slogan { font-size: 1.3rem; margin-bottom: 30px; max-width: 700px; color: #636e72; }
+
+        .btn {
+            padding: 14px 35px; border-radius: 30px; border: none;
+            background: var(--primary); color: white; font-weight: 600;
+            cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(149, 213, 178, 0.4);
+            font-size: 1rem;
+        }
+
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(149, 213, 178, 0.6); }
+
+        /* Картки */
+        .card {
+            background: var(--white); padding: 30px; border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03); margin-top: 20px;
+            border-top: 4px solid var(--primary);
+            position: relative; transition: 0.4s;
+        }
+
+        .card:hover { transform: translateY(-5px); }
+
+        .edit-label {
+            position: absolute; top: 10px; right: 20px; font-size: 0.7rem;
+            color: #ccc; cursor: pointer; text-transform: uppercase;
+        }
+
+        /* Платний розділ */
+        #plus { background: #fffcf2; }
+        .premium-card { border-top: 4px solid var(--premium) !important; }
+        .badge { background: var(--premium); color: white; padding: 4px 10px; border-radius: 8px; font-size: 0.7rem; }
+
+        /* Відео */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .video-placeholder {
+            background: #f1f3f5; border-radius: 12px; height: 180px;
+            display: flex; align-items: center; justify-content: center;
+            border: 2px dashed #dee2e6; color: #adb5bd; font-weight: bold;
+        }
+
+        /* Коментарі */
+        .comment-box { margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px; }
+        .c-input { width: 100%; padding: 12px; border: 1px solid #eee; border-radius: 10px; margin-bottom: 10px; background: #fafafa; }
+        .c-list { font-size: 0.9rem; max-height: 150px; overflow-y: auto; }
+        .comment-item { background: #f8f9fa; padding: 8px 12px; border-radius: 8px; margin-bottom: 8px; }
+
+        /* Футер */
+        footer { background: #40514e; color: white; padding: 40px 8%; text-align: center; }
+        .mail { color: var(--primary); text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-box">
+            <div class="logo-circle"></div>
+            <div class="logo-name">MindGuard</div>
+        </div>
+        <nav>
+            <a href="#home">Головна</a>
+            <a href="#goal">Мета</a>
+            <a href="#video">Відео</a>
+            <a href="#plus" class="nav-plus">Plus ✨</a>
+            <a href="#support">Підтримка</a>
+            <a href="#feedback">Контакти</a>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1 contenteditable="true">MindGuard</h1>
+        <p class="slogan" contenteditable="true">Повертаємо спокій, будуємо стійкість: Твій надійний простір для відновлення.</p>
+        <button class="btn" onclick="document.getElementById('goal').scrollIntoView()">Почати шлях</button>
+    </section>
+
+    <section id="goal" class="reveal">
+        <h2 style="margin-bottom: 30px;">Наша мета</h2>
+        <div class="card">
+            <span class="edit-label">Клікніть, щоб редагувати</span>
+            <p contenteditable="true">Наша мета — забезпечити безкоштовний та анонімний доступ до інструментів психологічної реабілітації для кожного, хто пережив травматичні події. Ми віримо, що кожен заслуговує на мир у душі та професійну підтримку.</p>
+            <br>
+            <h4 style="margin-bottom: 10px;">Як ми це робимо:</h4>
+            <ul contenteditable="true" style="margin-left: 20px;">
+                <li>Безкоштовні відео-практики та медитації.</li>
+                <li>Тексти, що мотивують та дають опору.</li>
+                <li>Спільнота, де тебе розуміють.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="video" class="reveal">
+        <h2 style="margin-bottom: 30px;">Відеокурси</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="video-placeholder">ВІДЕО 1: Арт-терапія</div>
+                <h4 style="margin: 15px 0 5px;" contenteditable="true">Основи заспокоєння</h4>
+                <div class="comment-box">
+                    <input type="text" class="c-input" placeholder="Залишити коментар...">
+                    <button class="btn" style="padding: 6px 15px; font-size: 0.8rem;" onclick="addComment(this)">Додати</button>
+                    <div class="c-list" style="margin-top: 10px;"></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="video-placeholder">ВІДЕО 2: Медитація</div>
+                <h4 style="margin: 15px 0 5px;" contenteditable="true">Вечірній релакс</h4>
+                <div class="comment-box">
+                    <input type="text" class="c-input" placeholder="Залишити коментар...">
+                    <button class="btn" style="padding: 6px 15px; font-size: 0.8rem;" onclick="addComment(this)">Додати</button>
+                    <div class="c-list" style="margin-top: 10px;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="plus" class="reveal">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="color: var(--premium);">MindGuard Plus ✨</h2>
+            <p>Отримайте глибшу підтримку від наших фахівців</p>
+        </div>
+        <div class="grid">
+            <div class="card premium-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="badge">ІНДИВІДУАЛЬНО</span>
+                    <strong style="color: var(--premium);">500 грн</strong>
+                </div>
+                <h3 style="margin: 15px 0 10px;" contenteditable="true">Консультація психолога</h3>
+                <p style="font-size: 0.9rem;" contenteditable="true">Особиста 60-хвилинна сесія у форматі відеодзвінка для вирішення складних емоційних станів.</p>
+                <button class="btn" style="width: 100%; margin-top: 20px; background: #40514e;">Замовити</button>
+            </div>
+            <div class="card premium-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="badge">ПІДПИСКА</span>
+                    <strong style="color: var(--premium);">250 грн/міс</strong>
+                </div>
+                <h3 style="margin: 15px 0 10px;" contenteditable="true">Закрита група підтримки</h3>
+                <p style="font-size: 0.9rem;" contenteditable="true">Доступ до щотижневих вебінарів, спільних чатів та ексклюзивних вправ.</p>
+                <button class="btn" style="width: 100%; margin-top: 20px; background: #40514e;">Приєднатися</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="support" class="reveal">
+        <h2 style="margin-bottom: 30px;">Твоя підтримка</h2>
+        <div class="card" style="background: var(--secondary); color: white; border: none; text-align: center; padding: 60px 20px;">
+            <h2 contenteditable="true" style="font-size: 2rem; margin-bottom: 15px;">"Ти — не один. Твоя історія має значення."</h2>
+            <p contenteditable="true">Цей розділ створений, щоб ти пам’ятав: кожен крок до самодопомоги — це велика перемога. Ми тут, щоб підтримати тебе на кожному етапі.</p>
+        </div>
+    </section>
+
+    <section id="feedback" class="reveal">
+        <div class="card" style="max-width: 800px; margin: 0 auto;">
+            <h2>Зворотній зв'язок</h2>
+            <p style="margin: 15px 0;">Маєте питання чи пропозиції? Пишіть нам на пошту:</p>
+            <a href="mailto:mindguardproject@gmail.com" class="mail">mindguardproject@gmail.com</a>
+            
+            <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;">
+            
+            <h4 style="margin-bottom: 15px;">Запитання до вас:</h4>
+            <div contenteditable="true">
+                <p>1. Які пропозиції по покращенню цієї програми (сайту) є у вас?</p>
+                <p>2. Який формат відео вам подобається найбільше?</p>
+                <p>3. Що допомагає вам заспокоїтися найшвидше?</p>
+            </div>
+            <textarea class="c-input" style="height: 120px; margin-top: 20px;" placeholder="Ваша відповідь тут..."></textarea>
+            <button class="btn">Надіслати відгук</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 MindGuard Project. Робимо світ спокійнішим.</p>
+    </footer>
+
+    <script>
+        // Анімація появи при скролі
+        const sections = document.querySelectorAll('.reveal');
+        const observerOptions = { threshold: 0.2 };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+
+        // Функція коментарів
+        function addComment(btn) {
+            const input = btn.previousElementSibling;
+            const list = btn.nextElementSibling;
+            if (input.value.trim() !== "") {
+                const comment = document.createElement('div');
+                comment.className = 'comment-item';
+                comment.innerHTML = `<strong>Користувач:</strong> ${input.value}`;
+                list.prepend(comment); // Нові коментарі зверху
+                input.value = "";
+            }
+        }
+    </script>
+</body>
+</html>
