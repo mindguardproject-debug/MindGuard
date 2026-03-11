@@ -30,12 +30,20 @@
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* Навігація */
-        header {
-            position: fixed; width: 100%; top: 0; padding: 15px 5%;
-            background: var(--glass); backdrop-filter: blur(10px);
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
+        <header>
+    <div class="logo-box">
+        <img src="logo.png" alt="MindGuard Logo" style="height: 40px; width: auto; display: block;">
+        <div class="logo-name">MindGuard</div>
+    </div>
+    <nav>
+        <a href="#home">Головна</a>
+        <a href="#goal">Мета</a>
+        <a href="#video">Відео</a>
+        <a href="#plus" class="nav-plus">Plus ✨</a>
+        <a href="#support">Підтримка</a>
+        <a href="#feedback">Контакти</a>
+    </nav>
+</header>
 
         .logo-box { display: flex; align-items: center; gap: 10px; }
         .logo-circle { width: 35px; height: 35px; background: var(--primary); border-radius: 50%; }
@@ -260,3 +268,4 @@
     </script>
 </body>
 </html>
+
